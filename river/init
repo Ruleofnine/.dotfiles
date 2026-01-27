@@ -1,0 +1,29 @@
+#!/bin/sh
+export PATH="$HOME/.local/bin:$PATH"
+pkill rivertile || true
+pkill waybar || true
+rivertile &
+waybar &
+riverctl default-layout rivertile
+$HOME/.local/scripts/wayland_3_monitors.sh &
+$HOME/.local/scripts/wayland_bg.sh &
+#spawn term
+riverctl map normal Mod4 Return spawn foot
+#run menu
+riverctl map normal Mod4 Space spawn bemenu-run --list 10
+
+riverctl map normal Mod4 Y send-to-output left
+riverctl map normal Mod4 N focus-output left
+riverctl map normal Mod4 O send-to-output right
+riverctl map normal Mod4 E focus-output right
+#close
+riverctl map normal Mod4 C close
+
+# Tag mappings (1–9)
+for i in $(seq 1 9); do
+  tag=$((1 << (i - 1)))
+  riverctl map normal Mod4 $i set-focused-tags $tag
+  riverctl map normal Mod4+Shift $i set-view-tags $tag
+  riverctl map normal Mod4+Control $i toggle-focused-tags $tag
+  riverctl map normal Mod4+Shift+Control $i toggle-view-tags $tag
+done

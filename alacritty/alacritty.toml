@@ -1,0 +1,336 @@
+
+# import = ["~/.config/alacritty/alacritty.toml"]
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#6272a4"
+blue = "#d6acff"
+cyan = "#a4ffff"
+green = "#69ff94"
+magenta = "#ff92df"
+red = "#ff6e6e"
+white = "#ffffff"
+yellow = "#ffffa5"
+
+[colors.cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+# [colors.footer_bar.bar]
+# background = "#282a36"
+# foreground = "#f8f8f2"
+#
+# [colors.footer_bar.focused_match]
+# background = "#ffb86c"
+# foreground = "#44475a"
+#
+# [colors.footer_bar.matches]
+# background = "#50fa7b"
+# foreground = "#44475a"
+#
+[colors.hints.end]
+background = "#282a36"
+foreground = "#f1fa8c"
+
+[colors.hints.start]
+background = "#f1fa8c"
+foreground = "#282a36"
+
+[colors.line_indicator]
+background = "None"
+foreground = "None"
+
+[colors.normal]
+black = "#000000"
+blue = "#bd93f9"
+cyan = "#8be9fd"
+green = "#50FA7B"
+magenta = "#BD93F9"
+red = "#FF5555"
+white = "#f8f8f2"
+yellow = "#f1fa8c"
+
+[colors.primary]
+background = "#0E1419"
+bright_foreground = "#ffffff"
+foreground = "#F8F8F2"
+
+[colors.selection]
+background = "#44475a"
+text = "CellForeground"
+
+[colors.vi_mode_cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[cursor.style]
+blinking = "On"
+shape = "Beam"
+
+[env]
+TERM = "alacritty"
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.normal]
+family = "JetBrains Mono Extra Light"
+
+[hints]
+alphabet = "jfkdls;ahgurieowpq"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ClearLogNotice"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "L"
+mode = "~Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "PageUp"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "PageDown"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "Home"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "End"
+mode = "~Alt"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "SearchConfirm"
+key = "F1"
+mode = "Search|Vi"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Control"
+
+# [schemes.ayu-dark.bright]
+# black = "0x686868"
+# blue = "0x59C2FF"
+# cyan = "0x95E6CB"
+# green = "0xC2D94C"
+# magenta = "0xFFEE99"
+# red = "0xF07178"
+# white = "0xFFFFFF"
+# yellow = "0xFFB454"
+#
+# [schemes.ayu-dark.normal]
+# black = "0x01060E"
+# blue = "0x53BDFA"
+# cyan = "0x90E1C6"
+# green = "0x91B362"
+# magenta = "0xFAE994"
+# red = "0xEA6C73"
+# white = "0xC7C7C7"
+# yellow = "0xF9AF4F"
+#
+# [schemes.ayu-dark.primary]
+# background = "0x0A0E14"
+# foreground = "0xB3B1AD"
+#
+# [schemes.cyber-neon.bright]
+# black = "0x1c61c2"
+# blue = "0x00ff00"
+# cyan = "0x0abdc6"
+# green = "0xd300c4"
+# magenta = "0x711c91"
+# red = "0xff0000"
+# white = "0xd7d7d5"
+# yellow = "0xf57800"
+#
+# [schemes.cyber-neon.cursor]
+# cursor = "0x0abdc6"
+# text = "0x000b1e"
+#
+# [schemes.cyber-neon.normal]
+# black = "0x123e7c"
+# blue = "0x123e7c"
+# cyan = "0x0abdc6"
+# green = "0xd300c4"
+# magenta = "0x711c91"
+# red = "0xff0000"
+# white = "0xd7d7d5"
+# yellow = "0xf57800"
+#
+# [schemes.cyber-neon.primary]
+# background = "0x000b1e"
+# foreground = "0x0abdc6"
+#
+# [schemes.default.bright]
+# black = "#666666"
+# blue = "#81a2be"
+# cyan = "#fb7e14"
+# green = "#9ec400"
+# magenta = "#b77ee0"
+# red = "#ff3334"
+# white = "#282a2e"
+# yellow = "#f0c674"
+#
+# [schemes.default.cursor]
+# cursor = "#ffffff"
+# text = "#1d1f21"
+#
+# [schemes.default.normal]
+# black = "#1d1f21"
+# blue = "#81a2be"
+# cyan = "#8BE9FD"
+# green = "#b5bd68"
+# magenta = "#b294bb"
+# red = "#cc6666"
+# white = "#ffffff"
+# yellow = "#e6c547"
+#
+# [schemes.default.primary]
+# background = "#0E1419"
+# foreground = "#F8F8F2"
+#
+# [schemes.doom-one.normal]
+# black = "0x282c34"
+# blue = "0x51afef"
+# cyan = "0x46d9ff"
+# green = "0x98be65"
+# magenta = "0xc678dd"
+# red = "0xff6c6b"
+# white = "0xbbc2cf"
+# yellow = "0xecbe7b"
+#
+# [schemes.doom-one.primary]
+# background = "0x282c34"
+# foreground = "0xbbc2cf"
+#
+# [schemes.dracula.bright]
+# black = "#6272a4"
+# blue = "#d6acff"
+# cyan = "#a4ffff"
+# green = "#69ff94"
+# magenta = "#ff92df"
+# red = "#ff6e6e"
+# white = "#ffffff"
+# yellow = "#ffffa5"
+#
+# [schemes.dracula.cursor]
+# cursor = "CellForeground"
+# text = "CellBackground"
+#
+# [schemes.dracula.footer_bar.bar]
+# background = "#282a36"
+# foreground = "#f8f8f2"
+#
+# [schemes.dracula.footer_bar.focused_match]
+# background = "#ffb86c"
+# foreground = "#44475a"
+#
+# [schemes.dracula.footer_bar.matches]
+# background = "#50fa7b"
+# foreground = "#44475a"
+#
+# [schemes.dracula.hints.end]
+# background = "#282a36"
+# foreground = "#f1fa8c"
+#
+# [schemes.dracula.hints.start]
+# background = "#f1fa8c"
+# foreground = "#282a36"
+#
+# [schemes.dracula.line_indicator]
+# background = "None"
+# foreground = "None"
+#
+# [schemes.dracula.normal]
+# black = "#21222c"
+# blue = "#bd93f9"
+# cyan = "#8be9fd"
+# green = "#50FA7B"
+# magenta = "#BD93F9"
+# red = "#FF5555"
+# white = "#f8f8f2"
+# yellow = "#f1fa8c"
+#
+# [schemes.dracula.primary]
+# background = "#0E1419"
+# bright_foreground = "#ffffff"
+# foreground = "#F8F8F2"
+#
+# [schemes.dracula.selection]
+# background = "#44475a"
+# text = "CellForeground"
+#
+# [schemes.dracula.vi_mode_cursor]
+# cursor = "CellForeground"
+# text = "CellBackground"
+#
+# [schemes.tokyo-night.bright]
+# black = "0x444b6a"
+# blue = "0x7da6ff"
+# cyan = "0x0db9d7"
+# green = "0xb9f27c"
+# magenta = "0xbb9af7"
+# red = "0xff7a93"
+# white = "0xacb0d0"
+# yellow = "0xff9e64"
+#
+# [schemes.tokyo-night.normal]
+# black = "0x32344a"
+# blue = "0x7aa2f7"
+# cyan = "0x449dab"
+# green = "0x9ece6a"
+# magenta = "0xad8ee6"
+# red = "0xf7768e"
+# white = "0x787c99"
+# yellow = "0xe0af68"
+#
+# [schemes.tokyo-night.primary]
+# background = "0x1a1b26"
+# foreground = "0xa9b1d6"
+#
+[scrolling]
+multiplier = 10
+
+[selection]
+save_to_clipboard = true
+
+[window]
+decorations = "none"
+opacity = 0.5
+
+[general]
+# dynamic_title = true
+# gtk_theme_variant = "None"
+live_config_reload = true

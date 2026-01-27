@@ -1,0 +1,89 @@
+
+/* Synthwave palette (matches your foot ANSI vibe) */
+@define-color black      #15182b;
+@define-color red        #ff4da6;
+@define-color green      #4dffd2;
+@define-color yellow     #ffc777;
+@define-color blue       #5f8cff;
+@define-color purple     #c77dff;
+@define-color aqua       #4dd2ff;
+@define-color gray       #c8bfff;
+
+@define-color brgray     #2a2f4a;
+@define-color brred      #ff7ac8;
+@define-color brgreen    #7dffe8;
+@define-color bryellow   #ffe29a;
+@define-color brblue     #82aaff;
+@define-color brpurple   #e0a3ff;
+@define-color braqua     #7de4ff;
+@define-color white      #f2ecff;
+
+@define-color bg         #0b1020;
+@define-color fg         #d6c6ff;
+
+/* Base bar */
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 12px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(11, 16, 32, 0.88);
+  color: @fg;
+}
+
+#workspaces,
+#window,
+#clock,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#battery,
+#tray {
+  background: rgba(21, 24, 43, 0.65);
+  padding: 4px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(42, 47, 74, 0.9);
+}
+
+/* Workspaces */
+#workspaces button {
+  padding: 0 6px;
+  color: @brgray;
+  background: transparent;
+  border: none;
+}
+
+#workspaces button.active {
+  color: @braqua;
+}
+
+#workspaces button.urgent {
+  color: @brred;
+}
+
+/* Window title */
+#window {
+  color: @fg;
+}
+
+/* Clock */
+#clock {
+  color: @white;
+}
+
+/* Right side accents */
+#calc { color: @brpurple; }
+#pulseaudio { color: @brpurple; }
+#network    { color: @brblue; }
+#cpu        { color: @green; }
+#memory     { color: @braqua; }
+#temperature{ color: @brgreen; }
+#battery    { color: @aqua; }
+
+#battery.warning { color: @bryellow; }
+#battery.critical,
+#temperature.critical { color: @brred; }

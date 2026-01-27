@@ -1,0 +1,86 @@
+{
+  // One bar per output (clean multi-monitor behavior)
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 8,
+  "margin-top": 6,
+  "margin-left": 8,
+  "margin-right": 8,
+  // Hyprland modules
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "calc",
+    "pulseaudio",
+    "network",
+    "cpu",
+    "memory",
+    "temperature",
+    "battery",
+    "tray"
+  ],
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "format-icons": {
+      "default": "●",
+      "active": "●",
+      "urgent": "●"
+    },
+    "persistent-workspaces": {
+      "*": 9
+    },
+    "all-outputs": false,
+    "active-only": true,
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 60,
+    "separate-outputs": true
+  },
+  "clock": {
+    "format": "{:%a %b %d  %I:%M %p}",
+    "tooltip-format": "{:%Y-%m-%d %H:%M:%S}"
+  },
+  "calc":{"format":":)"},
+  "pulseaudio": {
+    "format": " {volume}%",
+    "format-muted": " muted",
+    "on-click": "pavucontrol"
+  },
+  "network": {
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮 down",
+    "tooltip-format": "{ifname}\n{ipaddr}"
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "on-click":"neohtop"
+  },
+  "memory": {
+    "format": " {used:0.1f}G/{avail}G",
+    "on-click":"neohtop"
+  },
+  "temperature": {
+    "format": " {temperatureC}°C",
+    "critical-threshold": 85
+  },
+  "battery": {
+    "format": " {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-warning": " {capacity}%",
+    "warning": 20,
+    "critical": 10
+  },
+  "tray": {
+    "spacing": 8
+  }
+}
