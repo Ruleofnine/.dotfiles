@@ -3,8 +3,16 @@ if not ok then
 	return
 end
 
-local root_dir =
-	require("jdtls.setup").find_root({ "gradlew", "mvnw", "pom.xml", "build.gradle", "settings.gradle", ".git" })
+local root_dir = require("jdtls.setup").find_root({
+	".project",
+	".classpath",
+	"gradlew",
+	"mvnw",
+	"pom.xml",
+	"build.gradle",
+	"settings.gradle",
+	".git",
+})
 if not root_dir then
 	return
 end
