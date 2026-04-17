@@ -14,5 +14,6 @@ alias ct='cargo test -- --nocapture'
 alias btfcr='RUST_BACKTRACE=full cargo run'
 alias poafolder='cd $HOME/.local/share/Steam/steamapps/compatdata/2128270/pfx/drive_c/users/steamuser/AppData/Roaming/Godot/app_userdata/PoA'
 alias mcbuild="/home/rule/.local/scripts/monkeyc_build.sh"
-alias rli='ssh -i ~/.ssh/radiant-forge-poc-key.pem ec2-user@35.174.3.152'
-alias rli_nv='nvim -i ~/.ssh/radiant-forge-poc-key.pem oil-ssh://ec2-user@35.174.3.152//data/radiant/vds/vds_server' 
+alias rli='ssh -i ~/.ssh/radiant-forge-poc-key.pem ec2-user@52.90.58.44'
+alias rli_nv='nvim -i ~/.ssh/radiant-forge-poc-key.pem oil-ssh://ec2-user@52.90.58.44//data/radiant/vds/vds_server' 
+alias splunk_nv='nvim oil-ssh://adem@splunk//opt/splunk' 

@@ -40,6 +40,7 @@ in
  #-- NEEDED SO THE .ZPROFILE will source our session varibales
  home.file.".zshenv".text = ''
   export ZDOTDIR="$HOME/.config/zsh"
+  export PATH="/home/rule/.local/bin:$PATH"
   '';
 
   # --- map repo configs into ~/.config ---
