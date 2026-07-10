@@ -6,6 +6,10 @@ vim.pack.add({
 	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp", name = "cmp-nvim-lsp" },
 	{ src = "https://github.com/L3MON4D3/LuaSnip", name = "LuaSnip" },
 	{ src = "https://github.com/saadparwaiz1/cmp_luasnip", name = "cmp_luasnip" },
+	{ src = "https://github.com/hashicorp/terraform-ls", name = "terraformls" },
+	{ src = "https://github.com/stevearc/conform.nvim" },
+	{ src = "https://github.com/hrsh7th/cmp-buffer", name = "cmp_buffer" },
+	{ src = "https://github.com/f3fora/cmp-spell", name = "cmp_spell" },
 })
 
 vim.cmd.packadd("mason.nvim")
@@ -15,10 +19,32 @@ vim.cmd.packadd("nvim-cmp")
 vim.cmd.packadd("cmp-nvim-lsp")
 vim.cmd.packadd("LuaSnip")
 vim.cmd.packadd("cmp_luasnip")
+vim.cmd.packadd("terraformls")
+vim.cmd.packadd("cmp_buffer")
+vim.cmd.packadd("cmp_spell")
+local cmp = require("cmp")
+cmp.setup.filetype({ "markdown", "text" }, {
+	completion = {
+		autocomplete = {
+			require("cmp.types").cmp.TriggerEvent.TextChanged,
+		},
+	},
 
+	sources = cmp.config.sources({
+		{
+			name = "buffer",
+			keyword_length = 4,
+			option = {
+				get_bufnrs = function()
+					return { vim.api.nvim_get_current_buf() }
+				end,
+			},
+		},
+	}),
+})
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "clangd", "lua_ls" },
+	ensure_installed = { "clangd", "lua_ls", "terraformls" },
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -50,7 +76,7 @@ vim.lsp.config("lua_ls", {
 vim.lsp.enable("gdscript")
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
-
+vim.lsp.enable("terraformls")
 -- Telescope-powered definition picker with preview
 local function lsp_keymaps(bufnr)
 	local builtin = require("telescope.builtin")
@@ -132,3 +158,41 @@ vim.keymap.set({ "i", "n" }, "<C-p>", function()
 	vim.g.cmp_enabled = not vim.g.cmp_enabled
 	vim.notify("Completion " .. (vim.g.cmp_enabled and "ENABLED" or "DISABLED"), vim.log.levels.INFO)
 end, { desc = "Toggle completion (nvim-cmp)" })
+
+-- Terraform formatting
+require("conform").setup({
+	formatters_by_ft = {
+		terraform = { "terraform_fmt" },
+		tf = { "terraform_fmt" },
+		hcl = { "terraform_fmt" },
+	},
+	format_on_save = {
+		timeout_ms = 3000,
+		lsp_fallback = true,
+	},
+})
+
+-- Filetypes
+vim.filetype.add({
+	extension = {
+		tf = "terraform",
+		tfvars = "terraform",
+		hcl = "hcl",
+	},
+	filename = {
+		[".terraformrc"] = "hcl",
+		["terraform.rc"] = "hcl",
+	},
+})
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = { "*.tf", "*.tfvars" },
+	callback = function()
+		vim.system({ "tflint" }, { text = true }, function(result)
+			if result.code ~= 0 and result.stdout ~= "" then
+				vim.schedule(function()
+					vim.notify(result.stdout, vim.log.levels.WARN)
+				end)
+			end
+		end)
+	end,
+})

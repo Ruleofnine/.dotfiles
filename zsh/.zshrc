@@ -1,3 +1,7 @@
+# Home Manager session vars (PATH + home.sessionVariables)
+if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+  source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+fi
 fastfetch
 export LANG=en_US.UTF-8
 # Enable colors and change prompt:
@@ -6,7 +10,23 @@ autoload -U promptinit; promptinit
 function ls() {
     eza -al --color=always --group-directories-first "$@" | grep -v "^l"
 }
+function home-audit() {
+  local allow="$HOME/.config/home-hygiene/allowlist"
 
+  find "$HOME" -maxdepth 1 -mindepth 1 -printf '%f\n' \
+    | sort \
+    | grep '^\.' \
+    | grep -vxFf "$allow"
+}
+
+function home-audit-real() {
+  local allow="$HOME/.config/home-hygiene/allowlist"
+
+  find "$HOME" -maxdepth 1 -mindepth 1 ! -type l -printf '%f\n' \
+    | sort \
+    | grep '^\.' \
+    | grep -vxFf "$allow"
+}
 source <(/usr/bin/starship init zsh --print-full-init)
 HISTSIZE=10000
 SAVEHIST=10000
@@ -109,7 +129,6 @@ bindkey -s '^f' 'nvim $(fzf)\n'
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 # Load aliases and shortcuts if existent.
-[ -f "$HOME/.config/zsh/shortcutrc" ] && source "$HOME/.config/zsh/shortcutrc"
 [ -f "$HOME/.config/zsh/aliasrc" ] && source "$HOME/.config/zsh/aliasrc"
 fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
