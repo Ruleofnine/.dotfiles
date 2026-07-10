@@ -1,3 +1,5 @@
+
+
 { config, pkgs, ... }:
 
 {
@@ -11,7 +13,13 @@
     ./modules/paths.nix
     ./modules/xdg-hygiene.nix
     ./modules/links.nix
-    ./modules/zsh.nix
   ];
-}
+home.file.".zshenv".text = ''
+  if [ -e "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+    . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+  fi
 
+  export ZDOTDIR="''${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
+'';
+
+}
