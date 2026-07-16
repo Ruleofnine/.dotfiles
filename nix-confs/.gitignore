@@ -1,0 +1,6 @@
+# Nix build outputs created by commands such as `nix build`.
+/result
+/result-*
+
+# Optional local development environment state.
+/.direnv

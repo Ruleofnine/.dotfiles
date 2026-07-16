@@ -1,3 +1,5 @@
+require("fff.download").download_or_build_binary()
+
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
 		local name, kind = ev.data.spec.name, ev.data.kind

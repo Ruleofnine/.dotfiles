@@ -26,6 +26,7 @@ vim.keymap.set("n", "<c-a>", require("harpoon.mark").add_file, { desc = "Harpoon
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help" })
 vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Recent files" })
 --vim.keymap.set("n", "<c-f>", builtin.find_files, { desc = "find files" })
+
 vim.keymap.set("n", "<c-f>", function()
 	require("fff").find_files()
 end, { desc = "FFFind files" })

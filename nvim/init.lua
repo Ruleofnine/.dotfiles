@@ -1,3 +1,5 @@
+local profile = require("core.profile")
+
 require("core.opts")
 require("core.health")
 require("plugins.nvim-treesitter")
@@ -14,5 +16,10 @@ require("core.rulelib").setup()
 require("core.diagnostics")
 require("mini.icons").setup()
 require("core.format")
-vim.pack.add({ "https://github.com/mfussenegger/nvim-jdtls" })
-vim.pack.add({ "https://github.com/dmtrKovalenko/fff.nvim" })
+-- Desktop/development-machine plugins
+if profile.is_desktop() then
+	vim.pack.add({
+		"https://github.com/mfussenegger/nvim-jdtls",
+		"https://github.com/dmtrKovalenko/fff.nvim",
+	})
+end
